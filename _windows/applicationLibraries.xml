@@ -1,0 +1,37 @@
+<application>
+  <component name="libraryTable">
+    <library name="Python 3.7 (python-abs-tests) tox interpreter library">
+      <CLASSES>
+        <root url="file://D:/GitHub/python-abs-tests/.tox/Lib" />
+        <root url="file://D:/GitHub/python-abs-tests/.tox/Scripts" />
+        <root url="file://C:/Python3/Lib" />
+        <root url="file://C:/Python3/DLLs" />
+        <root url="file://D:/GitHub/python-abs-tests/.tox" />
+        <root url="file://D:/GitHub/python-abs-tests/.tox/Lib/site-packages" />
+        <root url="file://$USER_HOME$/.IntelliJIdea2018.2/system/python_stubs/-949196928" />
+        <root url="file://$APPLICATION_PLUGINS_DIR$/python/helpers/python-skeletons" />
+        <root url="file://$APPLICATION_PLUGINS_DIR$/python/helpers/typeshed/stdlib/3.4" />
+        <root url="file://$APPLICATION_PLUGINS_DIR$/python/helpers/typeshed/stdlib/3" />
+        <root url="file://$APPLICATION_PLUGINS_DIR$/python/helpers/typeshed/stdlib/2and3" />
+        <root url="file://$APPLICATION_PLUGINS_DIR$/python/helpers/typeshed/third_party/3" />
+        <root url="file://$APPLICATION_PLUGINS_DIR$/python/helpers/typeshed/third_party/2and3" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES>
+        <root url="file://D:/GitHub/python-abs-tests/.tox/Lib" />
+        <root url="file://D:/GitHub/python-abs-tests/.tox/Scripts" />
+        <root url="file://C:/Python3/Lib" />
+        <root url="file://C:/Python3/DLLs" />
+        <root url="file://D:/GitHub/python-abs-tests/.tox" />
+        <root url="file://D:/GitHub/python-abs-tests/.tox/Lib/site-packages" />
+        <root url="file://$USER_HOME$/.IntelliJIdea2018.2/system/python_stubs/-949196928" />
+        <root url="file://$APPLICATION_PLUGINS_DIR$/python/helpers/python-skeletons" />
+        <root url="file://$APPLICATION_PLUGINS_DIR$/python/helpers/typeshed/stdlib/3.4" />
+        <root url="file://$APPLICATION_PLUGINS_DIR$/python/helpers/typeshed/stdlib/3" />
+        <root url="file://$APPLICATION_PLUGINS_DIR$/python/helpers/typeshed/stdlib/2and3" />
+        <root url="file://$APPLICATION_PLUGINS_DIR$/python/helpers/typeshed/third_party/3" />
+        <root url="file://$APPLICATION_PLUGINS_DIR$/python/helpers/typeshed/third_party/2and3" />
+      </SOURCES>
+    </library>
+  </component>
+</application>
