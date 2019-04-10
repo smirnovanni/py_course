@@ -1,17 +1,43 @@
 import sqlite3
 from datetime import datetime
-
 from telebot import TeleBot
-
+from source.config import TOKEN
+from source.variables import *
 from fssp_api import *
 
+def dict_factory(cursor, row):
+    d = {}
+    for idx, col in enumerate(cursor.description):
+        d[col[0]] = row[idx]
+    return d
+
+def get_results(message):
+    while True:
+        db = sqlite3.connect("fssp_api_bot.db")
+        db.row_factory = dict_factory
+        cursor = db.cursor()
+        cursor.execute("SELECT * FROM queue WHERE state=0 and chat_id=?", (message.chat.id,))
+        rows = cursor.fetchall()
+        #print(rows)
+        for row in rows:
+            state = get_status(row['task_id'])
+            #print('state ' + str(state) + ' ' + row['task_id'])
+            if state == 0:
+                cursor.execute("UPDATE queue SET state = 1 WHERE state=0 and chat_id=? and task_id=?",
+                               (message.chat.id, row['task_id'],))
+        db.close()
+        return rows
 
 def run_bot():
-    bot = TeleBot('719958666:AAEmt0CT6CJS_xZvChdSXlb3RnipzzYK214')
+    bot = TeleBot(TOKEN)
 
     @bot.message_handler(commands=['start'])
     def function_name(message):
-        bot.send_message(message.chat.id, 'Введите ФИО!')
+        bot.send_message(message.chat.id, start_mess)
+
+    @bot.message_handler(commands=['help'])
+    def function_name(message):
+        bot.send_message(message.chat.id, help_mess)
 
     @bot.message_handler(content_types=['text'])
     def function_name(message):
@@ -29,27 +55,14 @@ def run_bot():
         except:
             bot.send_message(message.chat.id, "Попробуйте позже")
         finally:
-            bot.register_next_step_handler(message, get_results)
+            ans = get_results(message)
+            for a in ans:
+                msg = get_result(a['task_id'])
+                print(type(msg))
+                bot.send_message(message.chat.id, msg)
 
-    def get_results(message):
-        while True:
-            db = sqlite3.connect("fssp_api_bot.db")
-            cursor = db.cursor()
-            cursor.execute("SELECT * FROM queue WHERE state=0 and chat_id=?", (message.chat.id,))
-            rows = cursor.fetchall()
-            for row in rows:
-                print(row)
-                state = get_status(row[1])
-                if state == 0:
-                    msg = get_result(row[1])
-                    print(msg)
-                    bot.send_message(message.chat.id, msg)
-                    cursor.execute("UPDATE queue SET state = 1 WHERE state=0 and chat_id=? and task_id=?",
-                                   (message.chat.id, row[1],))
 
-            db.close()
-
-    bot.polling(none_stop=True, timeout=120)
+    bot.polling(none_stop=True, timeout=60)
 
 
 if __name__ == "__main__":
